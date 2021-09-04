@@ -1,7 +1,6 @@
 import * as THREE from '/build/three.module.js';
 import { OrbitControls } from '/jsm/controls/OrbitControls.js';
 
-
 const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth/window.innerHeight,
@@ -41,6 +40,7 @@ function init(){
     */
 
     //controls are used for handling the objects using mouse
+    renderer.setSize(window.innerWidth,window.innerHeight);
     let controls = new OrbitControls( camera, renderer.domElement );
     controls.addEventListener( 'change', renderer );
 
@@ -88,7 +88,7 @@ let theta = 0;
 let dTheta = 2 * Math.PI / 800;
 
 function animate(){
-    renderer.setSize( window.innerWidth, window.innerHeight )
+    window.addEventListener('resize', () => {window.location.reload()} );
     let b = 0;
     b += 0.0050;
     ring.rotateOnWorldAxis( new THREE.Vector3( 0, 1, 0 ), b );
